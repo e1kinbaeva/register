@@ -62,23 +62,20 @@
                         <a href="login-3.html">
                             <img src="{% static 'assets/img/logos/logo-2.png' %}" alt="logo">
                         </a>
-                        {% if user.is_authenticated %}
-                        <h3>Сделайте выбор</h3>
-                            <div class="form-group">
-                                <a href="{% url 'profile' request.user.id %}"><button type="submit" class="btn-md btn-theme w-100">Профиль</button></a>
+                        <h3>Войдите в свой аккаунт</h3>
+                        <form  method="POST">
+                            {% csrf_token %}
+                            <div class="form-group form-box">
+                                <input type="text" name="username" class="form-control" placeholder="ФИО" aria-label="Email Address">
+                            </div>
+                            <div class="form-group form-box">
+                                <input type="password" name="password" class="form-control" autocomplete="off" placeholder="Пароль" aria-label="Password">
                             </div>
                             <div class="form-group">
-                                <a href="{% url 'logout' %}"><button type="submit" class="btn-md btn-theme w-100">Выйти</button></a>
+                                <button type="submit" class="btn-md btn-theme w-100">Войти</button>
                             </div>
-                        {% else %}
-                        <h3>Сделайте выбор</h3>
-                            <div class="form-group">
-                                <a href="{% url 'register' %}"><button type="submit" class="btn-md btn-theme w-100">Регистрация</button></a>
-                            </div>
-                            <div class="form-group">
-                                <a href="{% url 'login' %}"><button type="submit" class="btn-md btn-theme w-100">Войти</button></a>
-                            </div>
-                        {% endif %}
+                            <p>У вас нет аккаунта ?<a href="{% url 'register' %}"> Регистрация здес</a></p>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -92,6 +89,5 @@
 <script src="{% static 'assets/js/popper.min.js' %}"></script>
 <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
 <!-- Custom JS Script -->
-
 </body>
 </html>

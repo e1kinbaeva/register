@@ -27,7 +27,7 @@ def register(request):
     return render(request,'register-3.html', locals())
 
 
-def profile(request):
+def profile(request, id):
     user = User.objectss.get(id=id)
     return render(request,'profile.html', locals())
 
